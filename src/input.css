@@ -2,44 +2,76 @@
 
 @theme {
   --color-brand-gold: #D4AF37;
-  --color-brand-dark: #1a1a1a;
-  --color-brand-gray: #333333;
-  --font-heading: 'Oswald', sans-serif;
-  --font-sans: 'Inter', sans-serif;
+  --color-brand-gold-light: #F3E5AB;
+  --color-brand-gold-dark: #AA820A;
+  --color-brand-dark: #0A0B0E;
+  --color-brand-surface: #14161B;
+  --color-brand-surface-elevated: #1C1F26;
+  --color-brand-gray: #2A2E39;
+  --font-serif-display: 'Cinzel', serif;
+  --font-heading: 'Syne', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: var(--color-brand-dark);
   }
 
   body {
     background-color: var(--color-brand-dark);
-    color: white;
+    color: #F3F4F6;
     font-family: var(--font-sans);
+    overflow-x: hidden;
+    selection-background-color: #D4AF37;
+    selection-color: #0A0B0E;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #997412 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-border-glow {
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.15);
+  }
+
+  .glass-panel {
+    background: rgba(20, 22, 27, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .glass-panel-gold {
+    background: rgba(20, 22, 27, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
   .btn-primary {
-    @apply bg-brand-gold text-brand-dark font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-white transition-colors duration-300 inline-block text-center cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#B38F24] text-[#0A0B0E] font-bold py-3.5 px-8 rounded-full uppercase tracking-wider hover:brightness-110 hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] transition-all duration-300 cursor-pointer text-sm;
   }
 
   .btn-secondary {
-    @apply border-2 border-white text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-white hover:text-brand-dark transition-colors duration-300 inline-block text-center cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 border border-white/20 bg-white/5 text-white font-semibold py-3.5 px-8 rounded-full uppercase tracking-wider hover:bg-white hover:text-[#0A0B0E] transition-all duration-300 cursor-pointer text-sm backdrop-blur-md;
   }
 
-  .card {
-    @apply bg-brand-gray p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300;
+  .btn-gold-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-[#D4AF37]/60 text-[#D4AF37] font-semibold py-3.5 px-8 rounded-full uppercase tracking-wider hover:bg-[#D4AF37] hover:text-[#0A0B0E] transition-all duration-300 cursor-pointer text-sm;
+  }
+
+  .luxury-card {
+    @apply bg-brand-surface border border-white/5 rounded-2xl p-7 hover:border-brand-gold/40 hover:-translate-y-1.5 transition-all duration-500 shadow-xl;
   }
 }
